@@ -90,3 +90,23 @@ document.addEventListener("click", (e) => {
     menuDiv.classList.remove("active");
   }
 });
+// copy Button
+let copyText = document.querySelector(".container");
+function copy() {
+  let input = copyText.querySelector("input#text-1");
+  let span = document.createElement("span");
+  let alert = document.querySelector(".alert");
+  span.append(document.createTextNode(input.value));
+  span.classList.add("Output");
+  copyText.prepend(span);
+  copyText.querySelector("button").addEventListener("click", () => {
+    copyText.classList.add("active");
+    setTimeout(() => {
+      copyText.classList.remove("active");
+    }, 2000);
+    input.select();
+    document.execCommand("copy");
+    window.getSelection().removeAllRanges();
+  });
+}
+copy();
